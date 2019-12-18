@@ -13,6 +13,7 @@
 		"postinstall": "electron-builder install-app-deps",
 		"lint": "xo",
 		"start": "electron .",
+		"test": "",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder --windows",
 		"release": "np"
