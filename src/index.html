@@ -2,121 +2,127 @@
 <html lang="en">
 
 <head>
-  <link href='static/material/materialIcons.css' rel='stylesheet' />
-  <link href="static/style/cropper.css" rel="stylesheet" />
-  <link href='static/style/style.css' rel='stylesheet' />
-  <link rel='stylesheet' href="static/material/material.min.css">
-  <link rel='stylesheet' href="static/material/material-select.min.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Trombinoscope</title>
+	<link href='static/material/materialIcons.css' rel='stylesheet' />
+	<link href="static/style/cropper.css" rel="stylesheet" />
+	<link href='static/style/style.css' rel='stylesheet' />
+	<link rel='stylesheet' href="static/material/material.min.css">
+	<link rel='stylesheet' href="static/material/material-select.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Trombinoscope</title>
 </head>
 
 <body>
-  <div class="parent">
-    <h5 style="text-decoration: underline">Gestion des Membres "A vos marques…prêts"</h5>
-    <button id="btnAdd" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored ">Ajouter
-      Membre</button>
-    <br> <br>
-    <button data-target='modalList' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored'
-      id='btnList' onclick="showList()">Liste Inscrits</button>
-    <br><br>
-    <form id='tableau'>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-        <input type="text" value="" name="type" class="mdl-textfield__input" id="type" readonly>
-        <input type="hidden" value="" name="sample6">
-        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-        <label for="sample6" class="mdl-textfield__label">Type</label>
-        <ul for="sample6" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-          <li class="mdl-menu__item" data-val="Grilles" data-selected="true">Grille</li>
-          <li class="mdl-menu__item" data-val="Listes">Liste</li>
-        </ul>
-      </div>
-      <input type='submit' value='Sauvegarder' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-    </form>
-    <br>
-  </div>
+	<div class="parent">
+		<h5 style="text-decoration: underline">Gestion des Membres "A vos marques…prêts"</h5>
+		<button id="btnAdd"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored ">Ajouter
+			Membre</button>
+		<br> <br>
+		<button data-target='modalList'
+			class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored' id='btnList'
+			onclick="showList()">Liste Inscrits</button>
+		<br><br>
+		<form id='tableau'>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+				<input type="text" value="" name="type" class="mdl-textfield__input" id="type" readonly>
+				<input type="hidden" value="" name="sample6">
+				<i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+				<label for="sample6" class="mdl-textfield__label">Type</label>
+				<ul for="sample6" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+					<li class="mdl-menu__item" data-val="Grilles" data-selected="true">Grille</li>
+					<li class="mdl-menu__item" data-val="Listes">Liste</li>
+				</ul>
+			</div>
+			<input type='submit' value='Sauvegarder'
+				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+		</form>
+		<br>
+	</div>
 
-  <!-- Dialog Crop Image Input -->
-  <dialog class="mdl-dialog" id="diaImg" style="width: 50em">
-    <h4 class="mdl-dialog__title">Découpe de l'image</h4>
-    <div class="mdl-dialog__content">
-      <div class="cropper" style="margin-left: auto; margin-right: auto">
-        <img src="" id="img" style='max-width: 100%;' />
-      </div>
-    </div>
-    <div class="mdl-dialog__actions">
-      <button id='btnCrop' type="button" class="mdl-button mdl-button--colored mdl-button--raised">Valider</button>
-      <button type="button" id="btnCanImg" onclick="closeModalImg()" class="mdl-button close">Annuler</button>
-    </div>
-  </dialog>
+	<!-- Dialog Crop Image Input -->
+	<dialog class="mdl-dialog" id="diaImg" style="width: 50em">
+		<h4 class="mdl-dialog__title">Découpe de l'image</h4>
+		<div class="mdl-dialog__content">
+			<div class="cropper" style="margin-left: auto; margin-right: auto">
+				<img src="" id="img" style='max-width: 100%;' />
+			</div>
+		</div>
+		<div class="mdl-dialog__actions">
+			<button id='btnCrop' type="button" class="mdl-button mdl-button--colored mdl-button--raised">Valider</button>
+			<button type="button" id="btnCanImg" onclick="closeModalImg()" class="mdl-button close">Annuler</button>
+		</div>
+	</dialog>
 
-  <!-- Dialog List Users Edit/Delete -->
-  <dialog class="mdl-dialog" id="diaList" style="width: 40em">
-    <h4 class="mdl-dialog__title">Liste des membres</h4>
-    <div class="mdl-dialog__content">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="search">
-        <label class="mdl-textfield__label" for="search">Rechercher</label>
-      </div>
-        <button class="mdl-button mdl-js-button " id="clearSearch">
-            <i class="material-icons">clear</i>
-        </button>
-      <ul id="listMembers" class="mdl-list">
+	<!-- Dialog List Users Edit/Delete -->
+	<dialog class="mdl-dialog" id="diaList" style="width: 40em">
+		<h4 class="mdl-dialog__title">Liste des membres</h4>
+		<div class="mdl-dialog__content">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" id="search">
+				<label class="mdl-textfield__label" for="search">Rechercher</label>
+			</div>
+			<button class="mdl-button mdl-js-button " id="clearSearch">
+				<i class="material-icons">clear</i>
+			</button>
+			<ul id="listMembers" class="mdl-list">
 
-      </ul>
-    </div>
-    <div class="mdl-dialog__actions">
-      <button type="button" id="btnCanList" onclick="closeModalList()" class="mdl-button close">Fermer</button>
-    </div>
-  </dialog>
+			</ul>
+		</div>
+		<div class="mdl-dialog__actions">
+			<button type="button" id="btnCanList" onclick="closeModalList()" class="mdl-button close">Fermer</button>
+		</div>
+	</dialog>
 
-  <!-- Dialog User Form -->
-  <dialog class="mdl-dialog" id="diaUser" style="width: 60em">
-    <h4 class="mdl-dialog__title" style="text-align: center;">Edition Membre</h4>
-    <div class="mdl-dialog__content" style="text-align: center;">
-      <form id='formAdd'>
-        <input type="text" id="idUser" readonly style="display: none">
-        <input type='file' id='fileElem' accept='image/*' style="display:none">
-        <button type='button' id='fileSelect' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Charger
-          Photo</button>
-        <br>
-        <img src='' id='imgOut' style="width: 100px; height: 100px; margin-top: 1em"> <br>
-        <div class="mdl-textfield mdl-js-textfield">
-          <input type='text' id='name' class="mdl-textfield__input" placeholder="Nom + Prénom">
-          <!-- <label for='name' class="mdl-textfield__label">Nom</label> -->
-        </div>
-        <!-- <div class="mdl-textfield mdl-js-textfield">
+	<!-- Dialog User Form -->
+	<dialog class="mdl-dialog" id="diaUser" style="width: 60em">
+		<h4 class="mdl-dialog__title" style="text-align: center;">Edition Membre</h4>
+		<div class="mdl-dialog__content" style="text-align: center;">
+			<form id='formAdd'>
+				<input type="text" id="idUser" readonly style="display: none">
+				<input type='file' id='fileElem' accept='image/*' style="display:none">
+				<button type='button' id='fileSelect'
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Charger
+					Photo</button>
+				<br>
+				<img src='' id='imgOut' style="width: 100px; height: 100px; margin-top: 1em"> <br>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input type='text' id='name' class="mdl-textfield__input" placeholder="Nom + Prénom">
+					<!-- <label for='name' class="mdl-textfield__label">Nom</label> -->
+				</div>
+				<!-- <div class="mdl-textfield mdl-js-textfield">
           <input type='text' id='pre' class="mdl-textfield__input" placeholder="Prénom">
           <label for='pre' class="mdl-textfield__label">Prénom</label>
         </div> -->
-        <br>
-        <!-- <div class="mdl-textfield mdl-js-textfield"> -->
-          <!-- <textarea type='text' id='com' class="mdl-textfield__input" rows="5" placeholder="Commentaire"></textarea> -->
-          <!-- <label for='com' class="mdl-textfield__label">Commentaire</label> -->
-        <!-- </div> -->
-        <div id="editor"></div>
-        <br>
-        <input type='submit' value='Valider' id="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-          disabled>
-        <button type="button" id='cancelAdd' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Fermer</button>
-      </form>
-    </div>
-  </dialog>
-  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
-  </div>
-  <script src='static/material/material.min.js'></script>
-  <script src='static/material/material-select.min.js'></script>
-  <script src='renderer.js'></script>
-  <style>
-    .cropper {
-      height: 25em;
-      width: 25em;
-    }
-  </style>
+				<br>
+				<!-- <div class="mdl-textfield mdl-js-textfield"> -->
+				<!-- <textarea type='text' id='com' class="mdl-textfield__input" rows="5" placeholder="Commentaire"></textarea> -->
+				<!-- <label for='com' class="mdl-textfield__label">Commentaire</label> -->
+				<!-- </div> -->
+				<div id="editor"></div>
+				<br>
+				<input type='submit' value='Valider' id="submit"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" disabled>
+				<button type="button" id='cancelAdd'
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Fermer</button>
+			</form>
+		</div>
+	</dialog>
+	<div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button class="mdl-snackbar__action" type="button"></button>
+	</div>
+	<script src='static/material/material.min.js'></script>
+	<script src='static/material/material-select.min.js'></script>
+	<script src='renderer.js'></script>
+	<style>
+		.cropper {
+			height: 25em;
+			width: 25em;
+		}
+
+	</style>
 </body>
 
 </html>

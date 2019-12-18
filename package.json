@@ -40,7 +40,9 @@
 		"envs": [
 			"node",
 			"browser"
-		]
+		],
+		"ignores": ["./scripts/pdf.js","./src/userIcon.js", "./src/static/scripts/ckeditor.js"],
+		"semicolon": false
 	},
 	"np": {
 		"publish": false,
@@ -49,5 +51,8 @@
 	"build": {
 		"appId": "com.WolfVic.electron-builder"
 		
+	},
+	"engines": {
+		"node": ">=12"
 	}
 }
