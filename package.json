@@ -1,7 +1,7 @@
 {
 	"name": "electron-builder",
 	"productName": "electron builder",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Gestion de liste de membre",
 	"license": "MIT",
 	"repository": "WolfVic/electron-builder",
@@ -41,7 +41,11 @@
 			"node",
 			"browser"
 		],
-		"ignores": ["./scripts/pdf.js","./src/userIcon.js", "./src/static/scripts/ckeditor.js"],
+		"ignores": [
+			"./scripts/pdf.js",
+			"./src/userIcon.js",
+			"./src/static/scripts/ckeditor.js"
+		],
 		"semicolon": false
 	},
 	"np": {
@@ -50,7 +54,6 @@
 	},
 	"build": {
 		"appId": "com.WolfVic.electron-builder"
-		
 	},
 	"engines": {
 		"node": ">=12"
